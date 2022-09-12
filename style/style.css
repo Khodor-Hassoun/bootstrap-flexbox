@@ -199,7 +199,11 @@ a{
 .contact-inputs{
     display: flex;
     flex-direction: column;
+    padding-top: 75px;
 }
 .contact-inputs >*{
-    padding: 20px,0;
+    padding-bottom: 20px;
+    background-color: none;
+    border: none;
+    border-bottom:2px solid #2c3e50;
 }
