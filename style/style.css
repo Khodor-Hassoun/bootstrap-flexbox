@@ -125,14 +125,16 @@ a{
     width: 80%;
     padding-bottom: 30px;
 }
-.portfolio-content img{
+.portfolio-content >img{
     width: 20%;
     padding-bottom: 20px;
+    filter:brightness(0%);
 }
 .portfolio-image-row{
     display: flex;
     width: 100%;
     justify-content: space-around;
+    margin-bottom: 30px;
 
 
 }
@@ -144,4 +146,35 @@ a{
     box-sizing: border-box;
     width: 25%;
     margin: 30px, 10px;
+}
+
+
+
+
+
+
+
+
+/* About */
+.about-container{
+    background-color: #1abc9c;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+.about-content{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.about-content img{
+    width: 35%;
+}
+.about-text{
+    display: flex;
+    align-items: flex-start;
+}
+.about-text p{
+    margin: 10px;
 }
