@@ -40,6 +40,7 @@ a{
 .overview-container-left button{
     background-color: #f0e3e7;
     color: #e16574;
+    border: none;
 }
 .overview-container-left img{
     width: 12px;
@@ -82,7 +83,8 @@ a{
 /* Hero section */
 .hero-container{
     background-color: #1abc9c;
-    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
 }
 .hero-content{
     display: flex;
@@ -91,7 +93,55 @@ a{
     align-self: center;
     text-align: center;
     color:white;
+    width: 60%;
+    /* padding: 100px,0; */
 }
 .hero-content img{
-    width: 30%;
+    width: 35%;
+    /* padding: 20px, 0; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Image portfolio */
+.portfolio-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.portfolio-image-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    padding-bottom: 30px;
+}
+.portfolio-content img{
+    width: 20%;
+    padding-bottom: 20px;
+}
+.portfolio-image-row{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+
+}
+/* .portfolio-image{
+    box-sizing: border-box;
+    width: 100px;
+} */
+.portfolio-image-row img{
+    box-sizing: border-box;
+    width: 25%;
+    margin: 30px, 10px;
 }
