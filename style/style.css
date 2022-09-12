@@ -178,3 +178,28 @@ a{
 .about-text p{
     margin: 10px;
 }
+
+
+
+/* Contact */
+.contact-container{
+    display: flex;
+    justify-content: center;
+}
+.contact-content{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contact-content > img{
+    width: 35%;
+    filter:brightness(0%)
+}
+.contact-inputs{
+    display: flex;
+    flex-direction: column;
+}
+.contact-inputs >*{
+    padding: 20px,0;
+}
