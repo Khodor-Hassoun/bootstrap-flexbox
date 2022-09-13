@@ -12,32 +12,55 @@ let emailPattern = /\w{3,}\@\w{5,}/g;
 let phonePattern1 = /961[1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/g
 let phonePattern2 = /961[1-9][0-9][0-9][0-9][0-9][0-9][0-9]/g
 let textPattern = /\S{100,}/
-// error.style.backgroundColor='red'
+error.style.backgroundColor='red'
 
 const list = document.createElement('ul')
 
 
-// form.addEventListener('submit',(e)=>{
-//     let messages = []
-//     if(fullName.value.length < 5){
-//         messages.push("The name is invalid")
-//     }
-//     if(!(email.value.match(emailPattern))){
-//         messages.push('Invalid email')
-//     }
-//     if (!(phone.value.match(phonePattern1) || phone.value.match(phonePattern2))){
-//         messages.push('Invalid Phone')
-//     }
-//     if(!(textArea.value.match(textPattern))){
-//         messages.push("Invalid message")
-//     }
-//     if(messages.length > 0){
-//         e.preventDefault()
-//         error.innerText = messages.join(',')
-//     }
-// })
+form.addEventListener('submit',(e)=>{
+    let messages = []
+    if(fullName.value.length < 5){
+        messages.push("The name is invalid")
+    }
+    if(!(email.value.match(emailPattern))){
+        messages.push('Invalid email')
+    }
+    if (!(phone.value.match(phonePattern1) || phone.value.match(phonePattern2))){
+        messages.push('Invalid Phone')
+    }
+    if(!(textArea.value.match(textPattern))){
+        messages.push("Invalid message")
+    }
+    if(messages.length > 0){
+        e.preventDefault()
+        error.innerText = messages.join(',')
+    }
+})
 
 
+// Recieve data data from the api
+fetch('http://localhost/bootstrap-flexbox/apis/api.php')
+        .then(res =>{
+            return res.json();
+        })
+        .then(data =>{
+            console.log(data)
+            for (message of data) {
+                const listItem = document.createElement("li");
+                const result = document.createElement("b");
+                messageName = message.name;
+                messageText = message.message;
+                // console.log(countryCode, countryProb);
+                result.innerText = `${messageName}: `;
+                listItem.append(result);
+                listItem.append(messageText);
+                list.append(listItem);
+                apiMessages.append(list)
+              }
+        })
+        .catch(e =>{
+            console.log('error', e)
+    })
 
 // Send data to the API
 formApi.addEventListener('submit',(e)=>{
@@ -53,64 +76,4 @@ formApi.addEventListener('submit',(e)=>{
         .catch(e =>{
             console.log('error',e)
         })
-
-
-        fetch('http://localhost/bootstrap-flexbox/apis/api.php')
-        .then(res =>{
-            return res.json();
-        })
-        .then(data =>{
-            console.log(data)
-            for (message of data) {
-                const listItem = document.createElement("li");
-                const result = document.createElement("b");
-                messageName = message.name;
-                messageText = message.probability;
-                // console.log(countryCode, countryProb);
-                result.innerText = `${messageName}:`;
-                listItem.append(result,messageText);
-                list.append(listItem);
-                apiMessages.append(list)
-              }
-        })
-        .catch(e =>{
-            console.log('error', e)
-        })
 })
-
-
-
-// Recieve data data from the api
-// button.addEventListener('mouseover', ()=>{
-//     fetch('http://localhost/bootstrap-flexbox/apis/api.php')
-//     .then(res =>{
-//         return res.json();
-//     })
-//     .then(data =>{
-//         console.log(data)
-//         for (message of data) {
-//             const listItem = document.createElement("li");
-//             const result = document.createElement("b");
-//             messageName = message.name;
-//             messageText = message.probability;
-//             // console.log(countryCode, countryProb);
-//             result.innerText = `${messageName}:`;
-//             listItem.append(result,messageText);
-//             list.append(listItem);
-//             apiMessages.append(list)
-//           }
-//     })
-//     .catch(e =>{
-//         console.log('error', e)
-//     })
-// })
-// fetch('http://localhost/bootstrap-flexbox/apis/api.php')
-//     .then(res =>{
-//         return res.json();
-//     })
-//     .then(data =>{
-//         console.log(data)
-//     })
-//     .catch(e =>{
-//         console.log('error', e)
-//     })
