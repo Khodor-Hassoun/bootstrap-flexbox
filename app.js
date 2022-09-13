@@ -4,13 +4,15 @@ const email = document.getElementById('email')
 const phone = document.getElementById("number")
 const textArea = document.getElementById('message')
 const error = document.querySelector('.error')
+const button = document.querySelector(".form-button")
+const formApi = document.getElementById("form")
 
 let emailPattern = /\w{3,}\@\w{5,}/g;
 let phonePattern1 = /961[1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/g
 let phonePattern2 = /961[1-9][0-9][0-9][0-9][0-9][0-9][0-9]/g
 let textPattern = /\S{100,}/
 
-// error.style.backgroundColor='red'
+error.style.backgroundColor='red'
 // form.addEventListener('submit',(e)=>{
 //     let messages = []
 //     if(fullName.value.length < 5){
@@ -30,3 +32,18 @@ let textPattern = /\S{100,}/
 //         error.innerText = messages.join(',')
 //     }
 // })
+
+formApi.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const formData = new FormData(formApi);
+    fetch('http://localhost/bootstrap-flexbox/apis/addContact.php',{method: 'post', body: formData})
+        .then(res =>{
+            return res.json()
+        })
+        .then(data =>{
+            console.log(data)
+        })
+        .catch(e =>{
+            console.log('error',e)
+        })
+})
