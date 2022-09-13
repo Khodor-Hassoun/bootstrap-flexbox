@@ -33,8 +33,11 @@ error.style.backgroundColor='red'
 //     }
 // })
 
+
+
+// Send data to the API
 formApi.addEventListener('submit',(e)=>{
-    e.preventDefault();
+    // e.preventDefault();
     const formData = new FormData(formApi);
     fetch('http://localhost/bootstrap-flexbox/apis/addContact.php',{method: 'post', body: formData})
         .then(res =>{
@@ -47,3 +50,29 @@ formApi.addEventListener('submit',(e)=>{
             console.log('error',e)
         })
 })
+
+
+
+// Recieve data data from the api
+button.addEventListener('mouseover', ()=>{
+    fetch('http://localhost/bootstrap-flexbox/apis/api.php')
+    .then(res =>{
+        return res.json();
+    })
+    .then(data =>{
+        console.log(data)
+    })
+    .catch(e =>{
+        console.log('error', e)
+    })
+})
+// fetch('http://localhost/bootstrap-flexbox/apis/api.php')
+//     .then(res =>{
+//         return res.json();
+//     })
+//     .then(data =>{
+//         console.log(data)
+//     })
+//     .catch(e =>{
+//         console.log('error', e)
+//     })
