@@ -3,7 +3,7 @@
 
     include("connection.php");
 
-    $query = $mysqli->prepare("SELECT name, email FROM contact_info");
+    $query = $mysqli->prepare("SELECT name, message FROM contact_info");
     $query->execute();
     $array = $query->get_result();
     

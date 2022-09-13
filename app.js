@@ -6,13 +6,17 @@ const textArea = document.getElementById('message')
 const error = document.querySelector('.error')
 const button = document.querySelector(".form-button")
 const formApi = document.getElementById("form")
+const apiMessages = document.querySelector('.api-messages')
 
 let emailPattern = /\w{3,}\@\w{5,}/g;
 let phonePattern1 = /961[1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/g
 let phonePattern2 = /961[1-9][0-9][0-9][0-9][0-9][0-9][0-9]/g
 let textPattern = /\S{100,}/
+// error.style.backgroundColor='red'
 
-error.style.backgroundColor='red'
+const list = document.createElement('ul')
+
+
 // form.addEventListener('submit',(e)=>{
 //     let messages = []
 //     if(fullName.value.length < 5){
@@ -49,23 +53,57 @@ formApi.addEventListener('submit',(e)=>{
         .catch(e =>{
             console.log('error',e)
         })
+
+
+        fetch('http://localhost/bootstrap-flexbox/apis/api.php')
+        .then(res =>{
+            return res.json();
+        })
+        .then(data =>{
+            console.log(data)
+            for (message of data) {
+                const listItem = document.createElement("li");
+                const result = document.createElement("b");
+                messageName = message.name;
+                messageText = message.probability;
+                // console.log(countryCode, countryProb);
+                result.innerText = `${messageName}:`;
+                listItem.append(result,messageText);
+                list.append(listItem);
+                apiMessages.append(list)
+              }
+        })
+        .catch(e =>{
+            console.log('error', e)
+        })
 })
 
 
 
 // Recieve data data from the api
-button.addEventListener('mouseover', ()=>{
-    fetch('http://localhost/bootstrap-flexbox/apis/api.php')
-    .then(res =>{
-        return res.json();
-    })
-    .then(data =>{
-        console.log(data)
-    })
-    .catch(e =>{
-        console.log('error', e)
-    })
-})
+// button.addEventListener('mouseover', ()=>{
+//     fetch('http://localhost/bootstrap-flexbox/apis/api.php')
+//     .then(res =>{
+//         return res.json();
+//     })
+//     .then(data =>{
+//         console.log(data)
+//         for (message of data) {
+//             const listItem = document.createElement("li");
+//             const result = document.createElement("b");
+//             messageName = message.name;
+//             messageText = message.probability;
+//             // console.log(countryCode, countryProb);
+//             result.innerText = `${messageName}:`;
+//             listItem.append(result,messageText);
+//             list.append(listItem);
+//             apiMessages.append(list)
+//           }
+//     })
+//     .catch(e =>{
+//         console.log('error', e)
+//     })
+// })
 // fetch('http://localhost/bootstrap-flexbox/apis/api.php')
 //     .then(res =>{
 //         return res.json();
